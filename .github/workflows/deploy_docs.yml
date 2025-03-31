@@ -3,7 +3,7 @@ name: Deploy Sphinx Documentation
 on:
   push:
     branches:
-      - main  # Change to your main branch name if different
+      - main2  # Change to your main branch name if different
 
 jobs:
   build:
