@@ -1,0 +1,36 @@
+name: Deploy Sphinx Documentation
+
+on:
+  push:
+    branches:
+      - main  # Change to your main branch name if different
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'  # Specify your desired Python version
+
+      - name: Install dependencies
+        run: |
+          pip install -r requirements.txt
+          pip install sphinx sphinx-rtd-theme  # Include any additional Sphinx themes or extensions
+
+      - name: Build Sphinx documentation
+        run: |
+          cd docs/source
+          make html  # This assumes you have a Makefile in your docs/source directory
+
+      - name: Deploy to GitHub Pages
+        uses: actions/deploy-pages@v4
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./docs/source/_build/html  # Path to your built HTML documentation
+          publish_branch: gh-pages  # Specify the branch for GitHub Pages
