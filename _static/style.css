@@ -1,0 +1,8 @@
+/* Set maxmimum screen width to none */
+.wy-nav-content {
+    max-width: none;
+}
+/* Change the background color behind the logo to grey */
+.wy-side-nav-search {
+    background-color: #eeeeee !important;
+}
