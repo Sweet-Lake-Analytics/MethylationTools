@@ -7,6 +7,8 @@ on:
 jobs:
   pages:
     runs-on: ubuntu-latest
+    permissions:
+      contents: write  # Grant permission to push changes
     steps:
       - id: deployment
         uses: sphinx-notes/pages@v3
